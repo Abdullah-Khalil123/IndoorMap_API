@@ -1,0 +1,46 @@
+.mapScreen {
+  width: 995px;
+  height: 700px;
+  position: relative;
+}
+.Helper {
+  height: 5px;
+  width: 5px;
+
+  border-radius: 50%;
+  background-color: aqua;
+
+  position: absolute;
+}
+
+.ShowPoints {
+  height: 5px;
+  width: 5px;
+
+  border-radius: 50%;
+  position: absolute;
+}
+
+.ShowPoints p {
+  background-color: rgba(165, 42, 42, 0.226);
+  width: max-content;
+}
+
+/* .toolPointsDIsplay {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background-color: black;
+
+  height: 50px;
+  width: 200px;
+
+  color: white;
+} */
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}

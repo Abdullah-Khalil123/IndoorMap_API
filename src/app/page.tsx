@@ -1,95 +1,68 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
+import MapScreen from '@/Components/Map Screen'
+import React, { useState } from 'react'
+import floorPlan from '@/public/ground floor_page-0001.jpg'
+import { indexedWayPoints } from '@/constants/points'
+import { findShortestPath } from '@/utils/pathfinding'
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
+import style from './page.module.css'
 
-export default function Home() {
+const Home = () => {
+  const [startPoint, setStartPoint] = useState<number | null>(null)
+  const [endPoint, setEndPoint] = useState<number | null>(null)
+  const [shortestPath, setShortestPath] = useState<number[]>([])
+
+  const handleFindShortestPath = () => {
+    if (startPoint !== null && endPoint !== null) {
+      const path = findShortestPath(startPoint, endPoint)
+      setShortestPath(path) // Store the shortest path
+      console.log('Shortest Path:', path)
+    } else {
+      console.log('Please select both start and end points.')
+    }
+  }
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div>
+      <div className={style.MapView}>
+        <TransformWrapper>
+          <TransformComponent>
+            <MapScreen floorPlan={floorPlan} shortestPath={shortestPath} />
+          </TransformComponent>
+        </TransformWrapper>
+      </div>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      {/* <div>
+        <label>Start Point:</label>
+        <select
+          onChange={(e) => setStartPoint(Number(e.target.value))}
+          value={startPoint ?? ''}
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          <option value="">Select Start</option>
+          {indexedWayPoints.map((_, index) => (
+            <option key={index} value={index}>
+              {index}
+            </option>
+          ))}
+        </select>
+
+        <label>End Point:</label>
+        <select
+          onChange={(e) => setEndPoint(Number(e.target.value))}
+          value={endPoint ?? ''}
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <option value="">Select End</option>
+          {indexedWayPoints.map((_, index) => (
+            <option key={index} value={index}>
+              {index}
+            </option>
+          ))}
+        </select>
+
+        <button onClick={handleFindShortestPath}>Find Shortest Path</button>
+      </div> */}
     </div>
-  );
+  )
 }
+
+export default Home
