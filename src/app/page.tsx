@@ -10,6 +10,8 @@ import style from './page.module.css'
 const Home = () => {
   // const [startPoint, setStartPoint] = useState<number | null>(null)
   // const [endPoint, setEndPoint] = useState<number | null>(null)
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [shortestPath, setShortestPath] = useState<number[]>([])
 
   // const handleFindShortestPath = () => {
