@@ -1,4 +1,4 @@
-const doorPoints: any[] = [
+const doorPoints: { x: number; y: number }[] = [
   { x: 198.5, y: 464 },
   { x: 236.5, y: 388.7 },
   { x: 217.5, y: 553.7 },
@@ -37,7 +37,7 @@ const doorPoints: any[] = [
   { x: 556.9, y: 204.9 },
 ]
 
-const waypoints: any[] = [
+const waypoints: { x: number; y: number }[] = [
   { x: 217.5, y: 542.7 },
   { x: 217.5, y: 501.7 },
   { x: 221.5, y: 484.7 },
@@ -107,7 +107,7 @@ const waypoints: any[] = [
   { x: 283.5, y: 517.5 },
 ]
 
-const roomPoints: any[] = [
+const roomPoints: { x: number; y: number }[] = [
   { x: 215.5, y: 425.5 },
   { x: 304.5, y: 424.5 },
   { x: 277.5, y: 335.5 },

@@ -48,8 +48,8 @@ export const findShortestPath = (start: number, end: number): number[] => {
 // Drawing functions
 export const drawLine = (
   ctx: CanvasRenderingContext2D,
-  start: any,
-  end: any
+  start: { x: number; y: number },
+  end: { x: number; y: number }
 ) => {
   ctx.beginPath()
   ctx.moveTo(start.x, start.y)
@@ -59,7 +59,10 @@ export const drawLine = (
   ctx.stroke()
 }
 
-export const drawWaypoint = (ctx: CanvasRenderingContext2D, point: any) => {
+export const drawWaypoint = (
+  ctx: CanvasRenderingContext2D,
+  point: { x: number; y: number }
+) => {
   ctx.beginPath()
   ctx.arc(point.x, point.y, 2, 0, Math.PI * 2, false)
   ctx.fillStyle = 'red'
