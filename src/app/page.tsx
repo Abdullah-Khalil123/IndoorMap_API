@@ -1,11 +1,16 @@
 'use client'
 import MapScreen from '@/Components/Map Screen'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import floorPlan from '@/public/ground floor_page-0001.jpg'
 import { indexedWayPoints } from '@/constants/points'
 import { findShortestPath } from '@/utils/pathfinding'
-import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
+import {
+  TransformWrapper,
+  TransformComponent,
+  ReactZoomPanPinchContentRef,
+} from 'react-zoom-pan-pinch'
 import style from './page.module.css'
+import { time } from 'console'
 
 const Home = () => {
   const [startPoint, setStartPoint] = useState<number | null>(null)
@@ -13,6 +18,7 @@ const Home = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [shortestPath, setShortestPath] = useState<number[]>([])
+  const transformRef = useRef<ReactZoomPanPinchContentRef>(null)
 
   const handleFindShortestPath = () => {
     if (startPoint !== null && endPoint !== null) {
@@ -30,13 +36,28 @@ const Home = () => {
       setEndPoint(event.data['end'])
       handleFindShortestPath()
     }
+    const timer = setInterval(() => {
+      if (transformRef.current) {
+        transformRef.current.centerView()
+      }
+    }, 3000)
     window.addEventListener('message', handleIncommingData)
+
+    return () => {
+      window.removeEventListener('message', handleIncommingData)
+      clearInterval(timer)
+    }
   })
 
   return (
     <div>
       <div className={style.MapView}>
-        <TransformWrapper centerOnInit maxScale={5} minScale={0.7}>
+        <TransformWrapper
+          centerOnInit
+          maxScale={5}
+          minScale={0.7}
+          ref={transformRef}
+        >
           <TransformComponent>
             <MapScreen floorPlan={floorPlan} shortestPath={shortestPath} />
           </TransformComponent>
