@@ -2,7 +2,7 @@
 import MapScreen from '@/Components/Map Screen'
 import React, { useEffect, useRef, useState } from 'react'
 import floorPlan from '@/public/ground floor_page-0001.jpg'
-import { indexedWayPoints } from '@/constants/points'
+// import { indexedWayPoints } from '@/constants/points'
 import { findShortestPath } from '@/utils/pathfinding'
 import {
   TransformWrapper,
@@ -64,7 +64,7 @@ const Home = () => {
         </TransformWrapper>
       </div>
 
-      <div>
+      {/* <div>
         <label>Start Point:</label>
         <select
           onChange={(e) => setStartPoint(Number(e.target.value))}
@@ -92,7 +92,7 @@ const Home = () => {
         </select>
 
         <button onClick={handleFindShortestPath}>Find Shortest Path</button>
-      </div>
+      </div> */}
     </div>
   )
 }
