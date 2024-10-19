@@ -26,7 +26,9 @@ const Home = () => {
 
   useEffect(() => {
     function handleIncommingData(event: MessageEvent) {
-      console.log(event.data)
+      setStartPoint(event.data['start'])
+      setEndPoint(event.data['end'])
+      handleFindShortestPath()
     }
     window.addEventListener('message', handleIncommingData)
   })
