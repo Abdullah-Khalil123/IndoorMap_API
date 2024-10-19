@@ -10,7 +10,6 @@ import {
   ReactZoomPanPinchContentRef,
 } from 'react-zoom-pan-pinch'
 import style from './page.module.css'
-import { time } from 'console'
 
 const Home = () => {
   const [startPoint, setStartPoint] = useState<number | null>(null)
