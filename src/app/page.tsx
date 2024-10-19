@@ -1,6 +1,6 @@
 'use client'
 import MapScreen from '@/Components/Map Screen'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import floorPlan from '@/public/ground floor_page-0001.jpg'
 import { indexedWayPoints } from '@/constants/points'
 import { findShortestPath } from '@/utils/pathfinding'
