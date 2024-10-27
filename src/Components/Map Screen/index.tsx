@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react'
 import style from './mapScreen.module.css'
 import Image from 'next/image'
 import { indexedWayPoints } from '@/constants/points'
-import { drawLine } from '@/utils/pathfinding' // Import functions
+import { drawLine, drawWaypoint } from '@/utils/pathfinding' // Import functions
 
 interface MapScreenProps {
   floorPlan: StaticImageData
@@ -29,6 +29,12 @@ const MapScreen = ({ floorPlan, shortestPath }: MapScreenProps) => {
         const end = indexedWayPoints[shortestPath[i + 1]]
         drawLine(ctx, start, end) // Draw the line only for the shortest path
       }
+    }
+
+    // Draw the start and end points
+    if (shortestPath.length > 0) {
+      drawWaypoint(ctx, indexedWayPoints[shortestPath[0]])
+      drawWaypoint(ctx, indexedWayPoints[shortestPath[shortestPath.length - 1]])
     }
   }, [shortestPath]) // Redraw when the shortest path changes
 
