@@ -15,8 +15,6 @@ import {
 } from 'react-zoom-pan-pinch'
 import style from './page.module.css'
 import { indexedWayPoints } from '@/constants/points'
-import { clear } from 'console'
-import { start } from 'repl'
 
 const Home = () => {
   const [startPoint, setStartPoint] = useState<number | undefined>(undefined)
