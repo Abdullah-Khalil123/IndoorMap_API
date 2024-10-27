@@ -10,8 +10,6 @@
 .MapView {
   display: flex;
   flex-direction: column;
-
-  background-color: red;
 }
 .centerButton {
   position: fixed;
