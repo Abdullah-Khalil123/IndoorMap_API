@@ -35,14 +35,28 @@ const Home = () => {
   }
 
   function zoomToPlace() {
-    if (transformRef.current && startPoint)
-      transformRef.current.setTransform(
-        indexedWayPoints[startPoint].x - 300,
-        -indexedWayPoints[startPoint].y + 200,
-        1.5,
-        2,
-        'linear'
-      )
+    const point: HTMLElement | null = document.getElementById('point')
+    if (startPoint) {
+      if (point) {
+        point.style.backgroundColor = 'blue'
+        point.style.left = `${indexedWayPoints[startPoint].x}px`
+        point.style.top = `${indexedWayPoints[startPoint].y}px`
+      }
+      transformRef.current?.zoomToElement('point', 2)
+    } else {
+      if (point) {
+        point.style.backgroundColor = 'transparent'
+      }
+    }
+
+    // if (transformRef.current && startPoint)
+    //   transformRef.current.setTransform(
+    //     indexedWayPoints[startPoint].x - 300,
+    //     -indexedWayPoints[startPoint].y + 200,
+    //     1.5,
+    //     2,
+    //     'linear'
+    //   )
   }
 
   // This useEffect runs whenever startPoint or endPoint changes

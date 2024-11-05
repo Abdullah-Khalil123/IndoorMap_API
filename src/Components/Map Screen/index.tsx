@@ -40,6 +40,7 @@ const MapScreen = ({ floorPlan, shortestPath }: MapScreenProps) => {
 
   return (
     <div className={style.mapScreen}>
+      <div id="point"></div>
       <Image src={floorPlan} alt="Floor Plan" layout="fill" objectFit="cover" />
       <canvas
         ref={canvasRef}
