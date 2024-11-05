@@ -63,6 +63,7 @@ const Home = () => {
   useEffect(() => {
     if (startPoint !== null && endPoint !== null) {
       handleFindShortestPath()
+      zoomToPlace()
     }
   }, [startPoint, endPoint])
 
@@ -71,7 +72,6 @@ const Home = () => {
       setStartPoint(event.data['start'])
       setEndPoint(event.data['end'])
       handleFindShortestPath()
-      zoomToPlace()
     }
 
     window.addEventListener('message', handleIncommingData)
