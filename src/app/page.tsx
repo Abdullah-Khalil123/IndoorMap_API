@@ -69,7 +69,7 @@ const Home = () => {
 
   useEffect(() => {
     function handleIncommingData(event: MessageEvent) {
-      if (event.data != 'center') {
+      if (event && event.data != 'center') {
         setStartPoint(event.data['start'])
         setEndPoint(event.data['end'])
         handleFindShortestPath()
