@@ -36,7 +36,7 @@ const Home = () => {
 
   function zoomToPlace() {
     const point: HTMLElement | null = document.getElementById('point')
-    if (startPoint) {
+    if (startPoint != null) {
       if (point) {
         point.style.backgroundColor = 'blue'
         point.style.left = `${indexedWayPoints[startPoint].x}px`
