@@ -69,9 +69,13 @@ const Home = () => {
 
   useEffect(() => {
     function handleIncommingData(event: MessageEvent) {
-      setStartPoint(event.data['start'])
-      setEndPoint(event.data['end'])
-      handleFindShortestPath()
+      if (event.data != 'center') {
+        setStartPoint(event.data['start'])
+        setEndPoint(event.data['end'])
+        handleFindShortestPath()
+      } else {
+        zoomToPlace()
+      }
     }
 
     window.addEventListener('message', handleIncommingData)
