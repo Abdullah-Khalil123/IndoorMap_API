@@ -1,11 +1,11 @@
 'use client'
 import MapScreen from '@/Components/Map Screen'
 import React, { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
+// import Image from 'next/image'
 import floorPlan from '@/public/ground floor_page-0001.jpg'
 // import { indexedWayPoints } from '@/constants/points'
 
-import locImage from '@/public/current-location-svgrepo-com.svg'
+// import locImage from '@/public/current-location-svgrepo-com.svg'
 
 import { findShortestPath } from '@/utils/pathfinding'
 import {
