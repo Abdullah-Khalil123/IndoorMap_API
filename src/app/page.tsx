@@ -98,14 +98,14 @@ const Home = () => {
             <MapScreen floorPlan={floorPlan} shortestPath={shortestPath} />
           </TransformComponent>
         </TransformWrapper>
-        <div
+        {/* <div
           className={style.centerButton}
           onClick={() => {
             zoomToPlace()
           }}
         >
           <Image src={locImage} alt={'Current Location'} height={40}></Image>
-        </div>
+        </div> */}
       </div>
     </div>
   )
